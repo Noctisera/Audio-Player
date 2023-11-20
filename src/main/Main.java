@@ -1,6 +1,6 @@
 package main;
 
-import Commands.Command;
+import commands.Command;
 import checker.Checker;
 import checker.CheckerConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -73,7 +73,8 @@ public final class Main {
     public static void action(final String filePathInput,
                               final String filePathOutput) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        LibraryInput inputLibrary = objectMapper.readValue(new File(LIBRARY_PATH), LibraryInput.class);
+        LibraryInput inputLibrary = objectMapper.readValue(new File(LIBRARY_PATH),
+                LibraryInput.class);
         Library library = new Library(inputLibrary);
 
         ArrayNode outputs = objectMapper.createArrayNode();

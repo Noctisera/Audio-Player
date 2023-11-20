@@ -4,22 +4,20 @@ import fileio.input.SongInput;
 import lombok.Getter;
 
 import java.util.ArrayList;
-
-public class Song {
-    @Getter
-    public String name;
-    @Getter
-    public int duration;
-    public String album;
-    public ArrayList<String> tags;
-    public String lyrics;
-    public String genre;
-    public Integer releaseYear;
-    public String artist;
+@Getter
+public final class Song {
+    private final String name;
+    private final int duration;
+    private final String album;
+    private final ArrayList<String> tags;
+    private final String lyrics;
+    private final String genre;
+    private final Integer releaseYear;
+    private final String artist;
 
     public int likes;
 
-    public Song(SongInput songInput) {
+    public Song(final SongInput songInput) {
         this.name = songInput.getName();
         this.duration = songInput.getDuration();
         this.album = songInput.getAlbum();
@@ -31,11 +29,17 @@ public class Song {
         this.likes = 0;
     }
 
+    /**
+     * @return the name of the song
+     */
     public int getNumberOfLikes() {
         return likes;
     }
 
-    public void setLikes(int likes) {
+    /**
+     * @param likes the number of likes of the song
+     */
+    public void setLikes(final int likes) {
         this.likes = likes;
     }
 }

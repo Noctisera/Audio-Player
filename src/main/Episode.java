@@ -2,16 +2,14 @@ package main;
 
 import lombok.Getter;
 
-public class Episode {
-    @Getter
-    public String name;
-    @Getter
-    public int duration;
-    public String description;
+@Getter
+public final class Episode {
+    private final String name;
+    private final int duration;
 
-    public Episode(fileio.input.EpisodeInput episodeInput) {
+    public Episode(final fileio.input.EpisodeInput episodeInput) {
         this.name = episodeInput.getName();
         this.duration = episodeInput.getDuration();
-        this.description = episodeInput.getDescription();
+        String description = episodeInput.getDescription();
     }
 }

@@ -5,24 +5,30 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 
-public class Library {
-    @Getter
-    public ArrayList<Song> songs;
-    @Getter
-    public ArrayList<User> users;
-    @Getter
-    public ArrayList<Podcast> podcasts;
-    @Getter
-    public ArrayList<Playlist> playlists;
+@Getter
+public final class Library {
+    private final ArrayList<Song> songs;
+    private final ArrayList<User> users;
+    private final ArrayList<Podcast> podcasts;
+    private final ArrayList<Playlist> playlists;
 
-    public Library(ArrayList<Song> songs, ArrayList<User> users, ArrayList<Podcast> podcasts) {
+    /**
+     * @param songs     the songs in the library
+     * @param users     the users in the library
+     * @param podcasts  the podcasts in the library
+     */
+    public Library(final ArrayList<Song> songs, final ArrayList<User> users,
+                   final ArrayList<Podcast> podcasts) {
         this.songs = songs;
         this.users = users;
         this.podcasts = podcasts;
         this.playlists = new ArrayList<>();
     }
 
-    public Library(LibraryInput libraryInput) {
+    /**
+     * @param libraryInput the input library
+     */
+    public Library(final LibraryInput libraryInput) {
         this.songs = new ArrayList<>();
         this.users = new ArrayList<>();
         this.podcasts = new ArrayList<>();
@@ -41,39 +47,17 @@ public class Library {
         }
     }
 
-    public User getUser(String username) {
+    /**
+     * @param username the username of the user
+     * @return the user with the given username
+     */
+    public User getUser(final String username) {
         for (User user : this.users) {
-            if (user.username.equals(username)) {
+            if (user.getUsername().equals(username)) {
                 return user;
             }
         }
 
         return null;
     }
-
-    /*ArrayList<Playlist> GetTop5Playlists() {
-        // Get the 5 most followed playlists
-        ArrayList<Playlist> top5Playlists = new ArrayList<>();
-        for (Playlist playlist : this.playlists) {
-            if (top5Playlists.size() < 5) {
-                top5Playlists.add(playlist);
-
-                //Sort playlists by followers
-                top5Playlists.sort(Comparator.comparingInt(p -> p.followers));
-            } else {
-                for (Playlist topPlaylist : top5Playlists) {
-                    if (playlist.followers > topPlaylist.followers) {
-                        top5Playlists.remove(topPlaylist);
-                        top5Playlists.add(playlist);
-
-                        //Sort playlists by followers
-                        top5Playlists.sort(Comparator.comparingInt(p -> p.followers));
-                        break;
-                    }
-                }
-            }
-        }
-
-        return top5Playlists;
-    }*/
 }

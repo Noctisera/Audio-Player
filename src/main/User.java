@@ -4,19 +4,16 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 
-public class User {
-    @Getter
-    public String username;
-    int age;
-    public String city;
-    @Getter
-    public ArrayList<Playlist> playlists;
-    @Getter
-    public ArrayList<Playlist> followedPlaylists;
-    @Getter
-    public ArrayList<Song> likedSongs;
+@Getter
+public final class User {
+    private final String username;
+    private final int age;
+    private final String city;
+    private final ArrayList<Playlist> playlists;
+    private final ArrayList<Playlist> followedPlaylists;
+    private final ArrayList<Song> likedSongs;
 
-    public User(fileio.input.UserInput userInput) {
+    public User(final fileio.input.UserInput userInput) {
         this.username = userInput.getUsername();
         this.age = userInput.getAge();
         this.city = userInput.getCity();
