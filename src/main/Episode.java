@@ -10,6 +10,5 @@ public final class Episode {
     public Episode(final fileio.input.EpisodeInput episodeInput) {
         this.name = episodeInput.getName();
         this.duration = episodeInput.getDuration();
-        String description = episodeInput.getDescription();
     }
 }

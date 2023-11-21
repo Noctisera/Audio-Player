@@ -6,6 +6,7 @@ import main.Podcast;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Status {
     /**
@@ -44,8 +45,8 @@ public class Status {
                     }
                 }
                 case "podcast" -> {
-                    name = loadState.getLoadedPodcast().getCurrentEpisode(loadState.
-                            getRemainingTime()).getName();
+                    name = Objects.requireNonNull(loadState.getLoadedPodcast().getCurrentEpisode(
+                            loadState.getRemainingTime())).getName();
                     remainedTime = substituteFromPodcast(remainedTime,
                             loadState.getLoadedPodcast(), loadState.getLoadedPodcast().
                                     getCurrentEpisode(loadState.getRemainingTime()));

@@ -23,6 +23,7 @@ public class SwitchVisibility {
 
         User user = library.getUser(username);
 
+        assert user != null;
         if (playlistId > user.getPlaylists().size()) {
             message = "The specified playlist ID is too high.";
         } else {

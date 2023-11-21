@@ -24,6 +24,7 @@ public class ShowPlaylists {
 
         User user = library.getUser(username);
 
+        assert user != null;
         for (Playlist playlist : user.getPlaylists()) {
             LinkedHashMap<String, Object> playlistInfo = new LinkedHashMap<>();
             playlistInfo.put("name", playlist.getName());
