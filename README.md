@@ -228,4 +228,4 @@ Retrieve and display a list of the 5 most followed playlists.
 ### Report Files
 All generated reports are provided in Json files.
 
-<div align="center"><img src="https://media.tenor.com/AxfkbmY9MVkAAAAC/cat-vibe-cat-dance.gif" width="500px"></div>
+<div align="center"><img src="https://media.tenor.com/AxfkbmY9MVkAAAAC/cat-vibe-cat-dance.gif" width="400px"></div>
