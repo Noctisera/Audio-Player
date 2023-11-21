@@ -1,39 +1,40 @@
-# Proiect GlobalWaves  - Etapa 1
+# README Music Player
 
 <div align="center"><img src="https://media.tenor.com/XuaFiOk-2gcAAAAC/dreamy-bull.gif" width="300px"></div>
 
-#### Assignment Link: [https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/proiect/etapa1](https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/proiect/etapa1)
+## Description
 
+This project simulates a music platform with functionalities similar to Spotify. Users can perform various actions, and the system generates reports for administrators. The simulation is driven by commands provided in JSON files.
 
-## Skel Structure
+## Usage
 
-* src/
-  * checker/ - checker files
-  * fileio/ - contains classes used to read data from the json files
-  * main/
-      * Main - the Main class runs the checker on your implementation. Add the entry point to your implementation in it. Run Main to test your implementation from the IDE or from command line.
-      * Test - run the main method from Test class with the name of the input file from the command line and the result will be written
-        to the out.txt file. Thus, you can compare this result with ref.
-* input/ - contains the tests and library in JSON format
-* ref/ - contains all reference output for the tests in JSON format
+### Search Bar
+The search bar allows users to search for songs, playlists, and podcasts based on multiple filters. Filters include name, album, tags, lyrics, genre, release year, and artist.
 
-## Tests:
-1. test01_searchBar_songs_podcasts - 4p
-2. test02_playPause_song - 4p
-3. test03_like_create_addRemove - 4p
-4. test04_like_create_addRemove_error - 4p
-5. test05_playPause_playlist_podcast - 4p
-6. test06_playPause_error -4p
-7. test07_repeat - 4p
-8. test08_repeat_error - 4p
-9. test09_shuffle - 4p
-10. test10_shuffle_error - 4p
-11. test11_next_prev_forward_backward - 4p
-12. test12_next_prev_forward_backward_error - 4p
-13. test13_searchPlaylist_follow ---  (+4)
-14. test14_searchPlaylist_follow_error - 4p
-15. test15_statistics - 4p
-16. test16_complex - 10p
-17. test17_complex - 10p
+### Music Player
+The music player can play audio files from the library or playlists. Podcasts remember the last played episode and resume from that point.
+
+### User
+The platform supports multiple users, each with a unique username. Users can interact with the search bar, player, and create and manage playlists.
+
+### Timestamp
+Commands include a timestamp to simulate real-time execution. The timestamp indicates when a command is executed relative to the start of the simulation.
+
+## Commands
+Each command must be called in a certain way.
+
+### Search
+Search for songs, playlists, or podcasts based on specified filters.
+```json
+{
+    "command": "search",
+    "username": "alice22",
+    "timestamp": 10,
+    "type": "song",
+    "filters": {
+        "name": "Sta"
+    }
+}
+```
 
 <div align="center"><img src="https://media.tenor.com/c3xvaQpdxZ8AAAAd/kkatmane.gif" width="500px"></div>
