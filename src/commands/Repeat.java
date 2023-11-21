@@ -7,6 +7,8 @@ import java.util.LinkedHashMap;
 
 public class Repeat {
     /**
+     * Switches between the repeat states of each type of media.
+     *
      * @param command   the command to be executed
      * @param loadState the state of the load command
      * @return the output of the repeat command

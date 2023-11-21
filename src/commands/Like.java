@@ -10,6 +10,8 @@ import java.util.LinkedHashMap;
 
 public class Like {
     /**
+     * Like the loaded Song or the playing Song from the loaded Playlist.
+     *
      * @param library   the library of the application
      * @param command   the command to be executed
      * @param loadState the state of the load command

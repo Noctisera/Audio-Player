@@ -15,7 +15,7 @@ public class SearchBar {
     /* Search functions */
 
     /**
-     * Search for songs in the library
+     * Search for songs in the library and apply the filters
      *
      * @param searchParams the search filters
      * @param library      the library
@@ -64,7 +64,7 @@ public class SearchBar {
     }
 
     /**
-     * Search for playlists in the library
+     * Search for playlists in the library and apply the filters
      *
      * @param searchParams the search filters
      * @param library      the library
@@ -96,7 +96,7 @@ public class SearchBar {
     }
 
     /**
-     * Search for podcasts in the library
+     * Search for podcasts in the library and apply the filters
      *
      * @param searchParams the search filters
      * @param library      the library

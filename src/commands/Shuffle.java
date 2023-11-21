@@ -10,6 +10,9 @@ import java.util.Random;
 
 public class Shuffle {
     /**
+     * Shuffles the songs in the playlist using the Random class and a given seed.
+     * Set the seed to -1 in case no seed is given to deactivate the shuffle function.
+     *
      * @param command   the command to be executed
      * @param loadState the state of the load command
      * @return the output of the shuffle command

@@ -10,6 +10,8 @@ import java.util.Objects;
 
 public class AddRemoveInPlaylist {
     /**
+     * Adds or removes a song from the loaded playlist.
+     *
      * @param library   the library of the application
      * @param command   the command to be executed
      * @param loadState the state of the load command

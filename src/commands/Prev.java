@@ -8,6 +8,8 @@ import java.util.Objects;
 
 public class Prev {
     /**
+     * Loads the previous track.
+     *
      * @param command   the command to be executed
      * @param loadState the state of the load command
      * @return the output of the prev command
@@ -57,12 +59,13 @@ public class Prev {
                             loadState.getLoadedPodcast(), loadState.getLoadedPodcast().
                                     getCurrentEpisode(remainingEpisodeTime));
                     int watchedEpisodeTime = Objects.requireNonNull(loadState.getLoadedPodcast().
-                            getCurrentEpisode(remainingEpisodeTime)).getDuration() - remainingEpisodeTime;
+                            getCurrentEpisode(remainingEpisodeTime)).getDuration()
+                            - remainingEpisodeTime;
 
                     loadState.setRemainingTime(loadState.getRemainingTime() + watchedEpisodeTime);
                     message = "Skipped to next track successfully. The current track is "
-                            + Objects.requireNonNull(loadState.getLoadedPodcast().getCurrentEpisode
-                            (loadState.getRemainingTime())).getName() + ".";
+                            + Objects.requireNonNull(loadState.getLoadedPodcast().
+                            getCurrentEpisode(loadState.getRemainingTime())).getName() + ".";
                 }
                 default -> System.out.println("Invalid load type.");
             }

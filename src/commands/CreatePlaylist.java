@@ -9,6 +9,8 @@ import java.util.LinkedHashMap;
 
 public class CreatePlaylist {
     /**
+     * Creates a new empty playlist for a user.
+     *
      * @param library the main library
      * @param command the command to be executed
      * @return the output of the createPlaylist command

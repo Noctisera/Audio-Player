@@ -7,6 +7,8 @@ import java.util.LinkedHashMap;
 
 public class PlayPause {
     /**
+     * Switches the playback state between play and pause.
+     *
      * @param loadState the state of the load command
      */
     public void execute(final LoadState loadState) {
@@ -26,6 +28,8 @@ public class PlayPause {
     }
 
     /**
+     * Returns the output of the playPause command.
+     *
      * @param command   the command to be executed
      * @param loadState the state of the load command
      * @return the output of the playPause command

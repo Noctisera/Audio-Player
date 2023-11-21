@@ -10,6 +10,8 @@ public class Backward {
     private static final int TIME_SKIP = 90;
 
     /**
+     * Skips backward in the loaded Podcast by 90 seconds.
+     *
      * @param command   the command to be executed
      * @param loadState the state of the load command
      * @return the output of the backward command

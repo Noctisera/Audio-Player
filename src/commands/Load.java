@@ -8,6 +8,8 @@ import java.util.LinkedHashMap;
 
 public class Load {
     /**
+     * Loads the selected track into the loadState.
+     *
      * @param selectState the state of the select command
      * @param loadState   the state of the load command
      * @return the output of the load command

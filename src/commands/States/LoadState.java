@@ -7,6 +7,13 @@ import main.Playlist;
 import main.Podcast;
 import main.Song;
 
+/**
+ * The load state of music player
+ *
+ * <p>Stores the data of the loaded track and it's options like Play/Pause, Repeat, Shuffle
+ * state. There is also time data stored that necessary for calculating the remaining
+ * time in later commands.</p>
+ */
 @Getter @Accessors(chain = true) @Setter
 public final class LoadState {
     /* Load information */

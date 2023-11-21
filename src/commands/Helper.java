@@ -8,6 +8,8 @@ public final class Helper {
         throw new UnsupportedOperationException();
     }
     /**
+     * Updates the state of the loaded track.
+     *
      * @param loadState the state of the load command
      * @param timestamp the timestamp of the current command
      */

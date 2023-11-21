@@ -13,6 +13,8 @@ import java.util.LinkedHashMap;
 
 public class Search {
     /**
+     * Updates the search state with the results of the search.
+     *
      * @param library the library to search in
      * @param command the command to be executed
      * @return the search state
@@ -47,6 +49,8 @@ public class Search {
     }
 
     /**
+     * Returns the output of the search command.
+     *
      * @param command    the command to be executed
      * @param searchState the search state
      * @return the output

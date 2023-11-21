@@ -10,6 +10,8 @@ import java.util.LinkedHashMap;
 
 public class ShowPlaylists {
     /**
+     * Returns the output of the showPlaylists command.
+     *
      * @param library the library of the application
      * @param command the command to be executed
      * @return the output of the showPlaylists command

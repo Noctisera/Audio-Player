@@ -16,6 +16,7 @@ import java.util.Objects;
 
 public class Command {
     /**
+     * Forwards the command to the corresponding method.
      * @param library  the library
      * @param commands the list of commands to be executed
      * @param outputs  the list of outputs
@@ -75,8 +76,7 @@ public class Command {
      */
     public void executeSearch(final Library library, final HashMap<String, Object> command,
                               final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState;
         SelectState selectState = user.getSelectState();
@@ -98,13 +98,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeSelect(final Library library, final HashMap<String, Object> command,
                               final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState;
@@ -126,13 +126,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeLoad(final Library library, final HashMap<String, Object> command,
                             final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -153,13 +153,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executePlayPause(final Library library, final HashMap<String, Object> command,
                                  final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -179,13 +179,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeRepeat(final Library library, final HashMap<String, Object> command,
                               final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -204,13 +204,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeShuffle(final Library library, final HashMap<String, Object> command,
                                final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -229,13 +229,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeForward(final Library library, final HashMap<String, Object> command,
                                final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -254,13 +254,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeBackward(final Library library, final HashMap<String, Object> command,
                                 final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -285,8 +285,7 @@ public class Command {
      */
     public void executeLike(final Library library, final HashMap<String, Object> command,
                             final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -305,13 +304,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeNext(final Library library, final HashMap<String, Object> command,
                             final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -330,13 +329,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executePrev(final Library library, final HashMap<String, Object> command,
                             final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -361,8 +360,7 @@ public class Command {
      */
     public void executeAddRemoveInPlaylist(final Library library, final HashMap<String, Object>
             command, final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
@@ -382,13 +380,13 @@ public class Command {
     }
 
     /**
+     * @param library the library
      * @param command the command
      * @param outputs the list of outputs
      */
     public void executeStatus(final Library library, final HashMap<String, Object> command,
                               final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         LoadState loadState = Objects.requireNonNull(user).getLoadState();
 
         Helper.updateState(loadState, (int) command.get("timestamp"));
@@ -434,8 +432,7 @@ public class Command {
      */
     public void executeFollowPlaylist(final Library library, final HashMap<String, Object> command,
                                       final ArrayNode outputs) {
-        String username = (String) command.get("username");
-        User user = library.getUser(username);
+        User user = library.getUser((String) command.get("username"));
         SelectState selectState = Objects.requireNonNull(user).getSelectState();
 
         FollowPlaylist followPlaylist = new FollowPlaylist();
@@ -465,8 +462,8 @@ public class Command {
      */
     public void executeShowPreferredSongs(final Library library, final HashMap<String, Object>
             command, final ArrayNode outputs) {
-        ShowPrefferedSongs showPrefferedSongs = new ShowPrefferedSongs();
-        LinkedHashMap<String, Object> output = showPrefferedSongs.returnOutput(library, command);
+        ShowPreferredSongs showPreferredSongs = new ShowPreferredSongs();
+        LinkedHashMap<String, Object> output = showPreferredSongs.returnOutput(library, command);
 
         outputs.addPOJO(output);
     }

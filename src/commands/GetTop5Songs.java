@@ -11,6 +11,8 @@ import java.util.LinkedHashMap;
 public class GetTop5Songs {
     private static final int MAX_SONGS = 5;
     /**
+     * Get the 5 most liked songs from the library.
+     *
      * @param library the library of the application
      * @param command the command to be executed
      * @return the output of the getTop5Songs command

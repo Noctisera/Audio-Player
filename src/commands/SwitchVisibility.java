@@ -8,6 +8,8 @@ import java.util.LinkedHashMap;
 
 public class SwitchVisibility {
     /**
+     * Switches the visibility of a playlist between public and private.
+     *
      * @param library the main library
      * @param command the command to be executed
      * @return the output of the switchVisibility command

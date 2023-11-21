@@ -1,4 +1,4 @@
-# README Music Player
+# Audio Player
 
 <div align="center"><img src="https://media.tenor.com/llgchsljWEcAAAAd/catvibe.gif" width="300px"></div>
 

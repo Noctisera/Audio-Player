@@ -10,6 +10,8 @@ import java.util.Objects;
 
 public class Status {
     /**
+     * Returns the data of the loadState.
+     *
      * @param command   the command to be executed
      * @param loadState the state of the load command
      * @return the output of the next command

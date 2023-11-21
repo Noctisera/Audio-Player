@@ -10,6 +10,8 @@ import java.util.LinkedHashMap;
 
 public class FollowPlaylist {
     /**
+     * Follows or unfollows the selected playlist.
+     *
      * @param library    the main library
      * @param command    the command to be executed
      * @param selectState the state of the select command
