@@ -3,6 +3,7 @@ package commands;
 import commands.States.LoadState;
 import commands.States.SearchState;
 import commands.States.SelectState;
+import main.User;
 import searchbar.Search;
 import searchbar.Select;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -11,12 +12,9 @@ import main.Library;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Command {
-    private SearchState searchState = new SearchState();
-    private SelectState selectState = new SelectState();
-    private LoadState loadState = new LoadState();
-
     /**
      * @param library  the library
      * @param commands the list of commands to be executed
@@ -28,29 +26,29 @@ public class Command {
             if (command.get("command").equals("search")) {
                 executeSearch(library, command, outputs);
             } else if (command.get("command").equals("select")) {
-                executeSelect(command, outputs);
+                executeSelect(library, command, outputs);
             } else if (command.get("command").equals("load")) {
-                executeLoad(command, outputs);
+                executeLoad(library, command, outputs);
             } else if (command.get("command").equals("playPause")) {
-                executePlayPause(command, outputs);
+                executePlayPause(library, command, outputs);
             } else if (command.get("command").equals("repeat")) {
-                executeRepeat(command, outputs);
+                executeRepeat(library, command, outputs);
             } else if (command.get("command").equals("shuffle")) {
-                executeShuffle(command, outputs);
+                executeShuffle(library, command, outputs);
             } else if (command.get("command").equals("forward")) {
-                executeForward(command, outputs);
+                executeForward(library, command, outputs);
             } else if (command.get("command").equals("backward")) {
-                executeBackward(command, outputs);
+                executeBackward(library, command, outputs);
             } else if (command.get("command").equals("like")) {
                 executeLike(library, command, outputs);
             } else if (command.get("command").equals("next")) {
-                executeNext(command, outputs);
+                executeNext(library, command, outputs);
             } else if (command.get("command").equals("prev")) {
-                executePrev(command, outputs);
+                executePrev(library, command, outputs);
             } else if (command.get("command").equals("addRemoveInPlaylist")) {
                 executeAddRemoveInPlaylist(library, command, outputs);
             } else if (command.get("command").equals("status")) {
-                executeStatus(command, outputs);
+                executeStatus(library, command, outputs);
             } else if (command.get("command").equals("createPlaylist")) {
                 executeCreatePlaylist(library, command, outputs);
             } else if (command.get("command").equals("switchVisibility")) {
@@ -77,6 +75,12 @@ public class Command {
      */
     public void executeSearch(final Library library, final HashMap<String, Object> command,
                               final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
         Search search = new Search();
         searchState = search.returnSearch(library, command);
@@ -86,13 +90,24 @@ public class Command {
         loadState.clear();
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeSelect(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeSelect(final Library library, final HashMap<String, Object> command,
+                              final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
         Select select = new Select();
         selectState = select.returnSelect(command, searchState);
@@ -102,13 +117,24 @@ public class Command {
         searchState.clear();
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeLoad(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeLoad(final Library library, final HashMap<String, Object> command,
+                            final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
         Load load = new Load();
         loadState = load.returnLoad(selectState, loadState);
@@ -117,13 +143,24 @@ public class Command {
         selectState.clear();
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executePlayPause(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executePlayPause(final Library library, final HashMap<String, Object> command,
+                                 final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         PlayPause playPause = new PlayPause();
@@ -131,58 +168,106 @@ public class Command {
         LinkedHashMap<String, Object> output = playPause.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeRepeat(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeRepeat(final Library library, final HashMap<String, Object> command,
+                              final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Repeat repeat = new Repeat();
         LinkedHashMap<String, Object> output = repeat.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeShuffle(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeShuffle(final Library library, final HashMap<String, Object> command,
+                               final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Shuffle shuffle = new Shuffle();
         LinkedHashMap<String, Object> output = shuffle.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeForward(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeForward(final Library library, final HashMap<String, Object> command,
+                               final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Forward forward = new Forward();
         LinkedHashMap<String, Object> output = forward.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeBackward(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeBackward(final Library library, final HashMap<String, Object> command,
+                                final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Backward backward = new Backward();
         LinkedHashMap<String, Object> output = backward.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
@@ -192,38 +277,70 @@ public class Command {
      */
     public void executeLike(final Library library, final HashMap<String, Object> command,
                             final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Like like = new Like();
         LinkedHashMap<String, Object> output = like.returnOutput(library, command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeNext(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeNext(final Library library, final HashMap<String, Object> command,
+                            final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Next next = new Next();
         LinkedHashMap<String, Object> output = next.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executePrev(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executePrev(final Library library, final HashMap<String, Object> command,
+                            final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Prev prev = new Prev();
         LinkedHashMap<String, Object> output = prev.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
@@ -233,6 +350,12 @@ public class Command {
      */
     public void executeAddRemoveInPlaylist(final Library library, final HashMap<String, Object>
             command, final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SearchState searchState = user.getSearchState();
+        SelectState selectState = user.getSelectState();
+        LoadState loadState = user.getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         AddRemoveInPlaylist addRemoveInPlaylist = new AddRemoveInPlaylist();
@@ -240,19 +363,30 @@ public class Command {
                 loadState);
 
         outputs.addPOJO(output);
+
+        user.setSearchState(searchState);
+        user.setSelectState(selectState);
+        user.setLoadState(loadState);
     }
 
     /**
      * @param command the command
      * @param outputs the list of outputs
      */
-    public void executeStatus(final HashMap<String, Object> command, final ArrayNode outputs) {
+    public void executeStatus(final Library library, final HashMap<String, Object> command,
+                              final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        LoadState loadState = Objects.requireNonNull(user).getLoadState();
+
         Helper.updateState(loadState, (int) command.get("timestamp"));
 
         Status status = new Status();
         LinkedHashMap<String, Object> output = status.returnOutput(command, loadState);
 
         outputs.addPOJO(output);
+
+        user.setLoadState(loadState);
     }
 
     /**
@@ -288,6 +422,10 @@ public class Command {
      */
     public void executeFollowPlaylist(final Library library, final HashMap<String, Object> command,
                                       final ArrayNode outputs) {
+        String username = (String) command.get("username");
+        User user = library.getUser(username);
+        SelectState selectState = Objects.requireNonNull(user).getSelectState();
+
         FollowPlaylist followPlaylist = new FollowPlaylist();
         LinkedHashMap<String, Object> output = followPlaylist.returnOutput(library, command,
                 selectState);

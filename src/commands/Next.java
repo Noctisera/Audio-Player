@@ -19,9 +19,11 @@ public class Next {
         int timestamp = (int) command.get("timestamp");
         String message = null;
 
-        if (loadState.getLoadedType() == null) {
+        if (loadState.getLoadedType() == null || loadState.getRemainingTime() <= 0) {
             message = "Please load a source before skipping to the next track.";
         } else {
+            loadState.setPlaybackState("play");
+
             switch (loadState.getLoadedType()) {
                 case "song" -> {
                     loadState.setRemainingTime(0);
@@ -31,11 +33,38 @@ public class Next {
                 case "playlist" -> {
                     loadState.setRemainingTime(0);
 
-                    int nextSongId = loadState.getLoadedPlaylist().getPlayingSongId() + 1;
-                    nextSongId = nextSongId % loadState.getLoadedPlaylist().getSongs().size();
-                    message = "Skipped to next track successfully. The current track is "
-                            + loadState.getLoadedPlaylist().getSongs().get(nextSongId).getName()
-                            + ".";
+                    switch (loadState.getRepeatState()) {
+                        case "No Repeat" -> {
+                            int nextSongId = loadState.getLoadedPlaylist().getPlayingSongId() + 1;
+
+                            // If is last song
+                            if (nextSongId == loadState.getLoadedPlaylist().getSongs().size()) {
+                                message = "Please load a source before skipping to the next "
+                                        + "track.";
+                            } else {
+                                nextSongId = nextSongId % loadState.getLoadedPlaylist().
+                                        getSongs().size();
+                                message = "Skipped to next track successfully. The current track"
+                                        + " is " + loadState.getLoadedPlaylist().getSongs().
+                                        get(nextSongId).getName() + ".";
+
+                            }
+                        }
+                        case "Repeat All" -> {
+                            int nextSongId = loadState.getLoadedPlaylist().getPlayingSongId() + 1;
+                            nextSongId = nextSongId % loadState.getLoadedPlaylist().getSongs().
+                                    size();
+                            message = "Skipped to next track successfully. The current track is "
+                                    + loadState.getLoadedPlaylist().getSongs().get(nextSongId).
+                                    getName() + ".";
+                        }
+                        case "Repeat Current Song" -> {
+                            message = "Skipped to next track successfully. The current track is "
+                                    + loadState.getLoadedPlaylist().getLoopedSong().getName()
+                                    + ".";
+                        }
+                        default -> System.out.println("Invalid repeat state.");
+                    }
                 }
                 case "podcast" -> {
                     int remainingEpisodeTime = loadState.getRemainingTime();

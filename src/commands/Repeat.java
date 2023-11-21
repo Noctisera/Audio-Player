@@ -18,7 +18,7 @@ public class Repeat {
         int timestamp = (int) command.get("timestamp");
         String message = (String) command.get("title");
 
-        if (loadState.getLoadedType() == null) {
+        if (loadState.getLoadedType() == null || loadState.getRemainingTime() <= 0) {
             message = "Please load a source before setting the repeat status.";
         } else {
             switch (loadState.getLoadedType()) {

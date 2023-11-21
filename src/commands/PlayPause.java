@@ -10,7 +10,7 @@ public class PlayPause {
      * @param loadState the state of the load command
      */
     public void execute(final LoadState loadState) {
-        if (loadState.getLoadedType() == null) {
+        if (loadState.getLoadedType() == null || loadState.getRemainingTime() <= 0) {
             return;
         }
 
@@ -38,7 +38,7 @@ public class PlayPause {
         int timestamp = (int) command.get("timestamp");
         String message = null;
 
-        if (loadState.getLoadedType() == null) {
+        if (loadState.getLoadedType() == null || loadState.getRemainingTime() <= 0) {
             message = "Please load a source before attempting to pause or resume playback.";
         } else {
             switch (loadState.getPlaybackState()) {

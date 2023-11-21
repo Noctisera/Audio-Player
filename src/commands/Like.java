@@ -26,7 +26,7 @@ public class Like {
 
         User user = library.getUser(username);
 
-        if (loadState.getLoadedType() == null) {
+        if (loadState.getLoadedType() == null || loadState.getRemainingTime() <= 0) {
             message = "Please load a source before liking or unliking.";
         } else {
             switch (loadState.getLoadedType()) {

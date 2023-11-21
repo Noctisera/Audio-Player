@@ -26,11 +26,12 @@ public class SwitchVisibility {
         if (playlistId > user.getPlaylists().size()) {
             message = "The specified playlist ID is too high.";
         } else {
-            if (user.getPlaylists().get(playlistId - 1).getVisibility().equals("private")) {
-                user.getPlaylists().get(playlistId - 1).setVisibility("public");
+            playlistId--;
+            if (user.getPlaylists().get(playlistId).getVisibility().equals("private")) {
+                user.getPlaylists().get(playlistId).setVisibility("public");
                 message = "Visibility status updated successfully to public.";
             } else {
-                user.getPlaylists().get(playlistId - 1).setVisibility("private");
+                user.getPlaylists().get(playlistId).setVisibility("private");
                 message = "Visibility status updated successfully to private.";
             }
         }

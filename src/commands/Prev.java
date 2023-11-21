@@ -19,9 +19,11 @@ public class Prev {
         int timestamp = (int) command.get("timestamp");
         String message = null;
 
-        if (loadState.getLoadedType() == null) {
+        if (loadState.getLoadedType() == null || loadState.getRemainingTime() <= 0) {
             message = "Please load a source before returning to the previous track.";
         } else {
+            loadState.setPlaybackState("play");
+
             switch (loadState.getLoadedType()) {
                 case "song" -> {
                     loadState.setRemainingTime(loadState.getLoadedSong().getDuration());
@@ -31,7 +33,7 @@ public class Prev {
                 case "playlist" -> {
                     int playingSongId = loadState.getLoadedPlaylist().getPlayingSongId();
                     if (loadState.getRemainingTime() + 1 >= loadState.getLoadedPlaylist().
-                            getSongs().get(playingSongId).getDuration()) {
+                            getSongs().get(playingSongId).getDuration() && playingSongId != 0) {
                         playingSongId = (playingSongId - 1 + loadState.getLoadedPlaylist().
                                 getSongs().size()) % loadState.getLoadedPlaylist().
                                 getSongs().size();

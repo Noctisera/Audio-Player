@@ -3,7 +3,10 @@ package commands;
 import commands.States.LoadState;
 import main.Playlist;
 
-final class Helper {
+public final class Helper {
+    private Helper() {
+        throw new UnsupportedOperationException();
+    }
     /**
      * @param loadState the state of the load command
      * @param timestamp the timestamp of the current command

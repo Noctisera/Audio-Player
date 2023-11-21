@@ -51,8 +51,6 @@ public class Shuffle {
                         getLoadedPlaylist().getPlayingSong());
                 loadState.getOldPlaylist().setFollowers(loadState.
                         getLoadedPlaylist().getFollowers());
-                loadState.getOldPlaylist().setVisibility(loadState.
-                        getLoadedPlaylist().getVisibility());
 
                 loadState.setLoadedPlaylist(loadState.getOldPlaylist());
                 loadState.setOldPlaylist(null);

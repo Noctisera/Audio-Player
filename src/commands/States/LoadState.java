@@ -2,36 +2,25 @@ package commands.States;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import main.Playlist;
 import main.Podcast;
 import main.Song;
 
-@Getter
+@Getter @Accessors(chain = true) @Setter
 public final class LoadState {
     /* Load information */
-    @Setter
     private Song loadedSong = null;
-    @Setter
     private Podcast loadedPodcast = null;
-    @Setter
     private Playlist loadedPlaylist = null;
-    @Setter
     private String loadedType = null;
-    /* Playback information */
-    @Getter @Setter
     private String playbackState = "play";
-    @Getter @Setter
     private String repeatState = "No Repeat";
-    @Getter @Setter
     private boolean shuffleState = false;
-    @Getter @Setter
     private int totalDuration = 0;
-    @Getter @Setter
     private int remainingTime = 0;
-    @Getter @Setter
     private int lastTimestamp = 0;
-    // Only used for shuffle
-    @Getter @Setter
+    /* Used for shuffle */
     private Playlist oldPlaylist = null;
 
     public LoadState() {

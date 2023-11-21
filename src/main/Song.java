@@ -2,9 +2,10 @@ package main;
 
 import fileio.input.SongInput;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
-@Getter
+@Getter @Setter
 public final class Song {
     private final String name;
     private final int duration;
@@ -14,8 +15,7 @@ public final class Song {
     private final String genre;
     private final Integer releaseYear;
     private final String artist;
-
-    public int likes;
+    private int likes;
 
     public Song(final SongInput songInput) {
         this.name = songInput.getName();
@@ -34,12 +34,5 @@ public final class Song {
      */
     public int getNumberOfLikes() {
         return likes;
-    }
-
-    /**
-     * @param likes the number of likes of the song
-     */
-    public void setLikes(final int likes) {
-        this.likes = likes;
     }
 }

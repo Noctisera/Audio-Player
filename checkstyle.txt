@@ -1,5 +1,2 @@
 Starting audit...
-[ERROR] /home/noctis/Desktop/Facultate/Anul2/POO/Teme/Tema1/oop-project-2023/etapa1/./src/main/Song.java:18:16: Variable 'likes' must be private and have accessor methods. [VisibilityModifier]
-[ERROR] /home/noctis/Desktop/Facultate/Anul2/POO/Teme/Tema1/oop-project-2023/etapa1/./src/commands/Helper.java:6:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
 Audit done.
-Checkstyle ends with 2 errors.

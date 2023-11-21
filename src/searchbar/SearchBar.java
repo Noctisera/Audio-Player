@@ -4,6 +4,7 @@ import main.Library;
 import main.Playlist;
 import main.Podcast;
 import main.Song;
+import main.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,14 +71,15 @@ public class SearchBar {
      * @return the search results, up to 5
      */
     public ArrayList<Playlist> searchPlaylist(final HashMap<String, Object> searchParams,
-                                              final Library library) {
+                                              final Library library, final User user) {
         ArrayList<Playlist> playlistList = library.getPlaylists();
         if (searchParams == null) {
             return playlistList;
         }
 
         // Check playlists for all the filters
-        playlistList = searchPlaylistByVisibility(playlistList);
+        playlistList = searchPlaylistByVisibility(playlistList, user);
+
         if (searchParams.containsKey("name")) {
             playlistList = searchPlaylistByName((String) searchParams.get("name"), playlistList);
         }
@@ -298,10 +300,12 @@ public class SearchBar {
         return playlistList;
     }
 
-    private ArrayList<Playlist> searchPlaylistByVisibility(final ArrayList<Playlist> playlists) {
+    private ArrayList<Playlist> searchPlaylistByVisibility(final ArrayList<Playlist> playlists,
+                                                           final User user) {
         ArrayList<Playlist> playlistList = new ArrayList<>();
         for (Playlist playlist : playlists) {
-            if (playlist.getVisibility().equals("public")) {
+            if (playlist.getVisibility().equals("public") || playlist.getOwner().
+                    equals(user.getUsername())) {
                 playlistList.add(playlist);
             }
         }

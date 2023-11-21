@@ -2,9 +2,10 @@ package searchbar;
 
 import commands.States.SearchState;
 import main.Library;
-import main.Playlist;
 import main.Podcast;
+import main.Playlist;
 import main.Song;
+import main.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +30,9 @@ public class Search {
             }
             case "playlist" -> {
                 searchState.setSearchedType("playlist");
-                searchState.setSearchPlaylists(searchBar.searchPlaylist(searchParams, library));
+                User user = library.getUser((String) command.get("username"));
+                searchState.setSearchPlaylists(searchBar.searchPlaylist(searchParams,
+                        library, user));
             }
             case "podcast" -> {
                 searchState.setSearchedType("podcast");
