@@ -1,6 +1,6 @@
 # Proiect GlobalWaves  - Etapa 1
 
-<div align="center"><img src="https://tenor.com/view/listening-to-music-spongebob-gif-8009182.gif" width="300px"></div>
+<div align="center"><img src="https://media.tenor.com/XuaFiOk-2gcAAAAC/dreamy-bull.gif" width="300px"></div>
 
 #### Assignment Link: [https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/proiect/etapa1](https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/proiect/etapa1)
 
@@ -36,4 +36,4 @@
 16. test16_complex - 10p
 17. test17_complex - 10p
 
-<div align="center"><img src="https://tenor.com/view/kkatmane-gif-25632172" width="500px"></div>
+<div align="center"><img src="https://media.tenor.com/c3xvaQpdxZ8AAAAd/kkatmane.gif" width="500px"></div>
