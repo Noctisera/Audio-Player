@@ -1,6 +1,6 @@
 # README Music Player
 
-<div align="center"><img src="https://media.tenor.com/XuaFiOk-2gcAAAAC/dreamy-bull.gif" width="300px"></div>
+<div align="center"><img src="https://media.tenor.com/llgchsljWEcAAAAd/catvibe.gif" width="500px"></div>
 
 ## Description
 
@@ -60,7 +60,7 @@ Load a selected audio source into the player.
 
 ### PlayPause
 Toggle between play and pause states.
-```
+```json
 {
     "command": "playPause",
     "username": "alice22",
@@ -228,4 +228,4 @@ Retrieve and display a list of the 5 most followed playlists.
 ### Report Files
 All generated reports are provided in Json files.
 
-<div align="center"><img src="https://media.tenor.com/c3xvaQpdxZ8AAAAd/kkatmane.gif" width="500px"></div>
+<div align="center"><img src="https://media.tenor.com/AxfkbmY9MVkAAAAC/cat-vibe-cat-dance.gif" width="500px"></div>
