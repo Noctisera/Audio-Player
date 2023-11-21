@@ -4,6 +4,7 @@ import commands.States.LoadState;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Backward {
     private static final int TIME_SKIP = 90;
@@ -31,8 +32,8 @@ public class Backward {
             remainingEpisodeTime = status.substituteFromPodcast(remainingEpisodeTime,
                     loadState.getLoadedPodcast(), loadState.getLoadedPodcast().
                             getCurrentEpisode(remainingEpisodeTime));
-            int episodeTime = loadState.getLoadedPodcast().getCurrentEpisode(loadState.
-                    getRemainingTime()).getDuration();
+            int episodeTime = Objects.requireNonNull(loadState.getLoadedPodcast().
+                    getCurrentEpisode(loadState.getRemainingTime())).getDuration();
 
             int watchedTime = episodeTime - remainingEpisodeTime;
 

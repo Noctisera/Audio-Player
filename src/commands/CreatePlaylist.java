@@ -24,6 +24,7 @@ public class CreatePlaylist {
 
         User user = library.getUser(username);
 
+        assert user != null;
         for (Playlist playlist : user.getPlaylists()) {
             if (playlist.getName().equals(playlistName)) {
                 message = "A playlist with the same name already exists.";

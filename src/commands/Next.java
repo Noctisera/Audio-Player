@@ -4,6 +4,7 @@ import commands.States.LoadState;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Next {
     /**
@@ -76,8 +77,8 @@ public class Next {
                     loadState.setRemainingTime(loadState.getRemainingTime()
                             - remainingEpisodeTime);
                     message = "Skipped to next track successfully. The current track is "
-                            + loadState.getLoadedPodcast().getCurrentEpisode(loadState.
-                            getRemainingTime() - 1).getName() + ".";
+                            + Objects.requireNonNull(loadState.getLoadedPodcast().getCurrentEpisode
+                            (loadState.getRemainingTime() - 1)).getName() + ".";
                 }
                 default -> System.out.println("Invalid load type.");
             }

@@ -6,6 +6,7 @@ import main.Playlist;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class AddRemoveInPlaylist {
     /**
@@ -29,11 +30,12 @@ public class AddRemoveInPlaylist {
         } else {
             switch (loadState.getLoadedType()) {
                 case "song" -> {
-                    if (playlistId > library.getUser(user).getPlaylists().size()) {
+                    if (playlistId > Objects.requireNonNull(library.getUser(user)).
+                            getPlaylists().size()) {
                         message = "The specified playlist does not exist.";
                     } else {
-                        Playlist playlist = library.getUser(user).getPlaylists().
-                                get(playlistId - 1);
+                        Playlist playlist = Objects.requireNonNull(library.getUser(user)).
+                                getPlaylists().get(playlistId - 1);
                         if (playlist.getSongs().contains(loadState.getLoadedSong())) {
                             playlist.removeSong(loadState.getLoadedSong());
                             message = "Successfully removed from playlist.";

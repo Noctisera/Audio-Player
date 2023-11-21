@@ -39,6 +39,7 @@ public class FollowPlaylist {
             } else if (playlist.getVisibility().equals("private")) {
                 message = "Please select a source before following or unfollowing.";
             } else {
+                assert user != null;
                 if (user.getFollowedPlaylists().contains(playlist)) {
                     user.getFollowedPlaylists().remove(playlist);
                     playlist.setFollowers(playlist.getFollowers() - 1);

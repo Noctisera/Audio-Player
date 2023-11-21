@@ -31,6 +31,7 @@ public class Like {
         } else {
             switch (loadState.getLoadedType()) {
                 case "song" -> {
+                    assert user != null;
                     if (user.getLikedSongs().contains(loadState.getLoadedSong())) {
                         user.getLikedSongs().remove(loadState.getLoadedSong());
                         message = "Unlike registered successfully.";

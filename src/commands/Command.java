@@ -77,7 +77,8 @@ public class Command {
                               final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
-        SearchState searchState = user.getSearchState();
+        assert user != null;
+        SearchState searchState;
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
 
@@ -104,8 +105,9 @@ public class Command {
                               final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
-        SelectState selectState = user.getSelectState();
+        SelectState selectState;
         LoadState loadState = user.getLoadState();
 
         Helper.updateState(loadState, (int) command.get("timestamp"));
@@ -131,6 +133,7 @@ public class Command {
                             final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -157,6 +160,7 @@ public class Command {
                                  final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -182,6 +186,7 @@ public class Command {
                               final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -206,6 +211,7 @@ public class Command {
                                final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -230,6 +236,7 @@ public class Command {
                                final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -254,6 +261,7 @@ public class Command {
                                 final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -279,6 +287,7 @@ public class Command {
                             final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -303,6 +312,7 @@ public class Command {
                             final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -327,6 +337,7 @@ public class Command {
                             final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
@@ -352,6 +363,7 @@ public class Command {
             command, final ArrayNode outputs) {
         String username = (String) command.get("username");
         User user = library.getUser(username);
+        assert user != null;
         SearchState searchState = user.getSearchState();
         SelectState selectState = user.getSelectState();
         LoadState loadState = user.getLoadState();
